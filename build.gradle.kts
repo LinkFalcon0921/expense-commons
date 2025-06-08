@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.flintcore"
-version = "0.8.1"
+version = "0.10.1"
 
 repositories {
     mavenLocal()
@@ -38,6 +38,8 @@ publishing {
         create<MavenPublication>("utilsLocal") {
             groupId = project.group.toString()
             version = project.version as String
+            artifactId = project.name
+
             pom.packaging = "jar"
             from(components["java"])
         }

@@ -33,6 +33,7 @@ public interface Aliases {
         String ID = "id";
         String RNC = "rnc";
         String NAME = "name";
+        String COMMERCIAL_NAME = "name";
         String MAPPED_BY_EXPENSE = "store";
     }
 
