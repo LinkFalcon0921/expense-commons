@@ -1,16 +1,17 @@
 package com.flintcore.expenses.commons.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 
 @Builder
 public record BillDto(
-        double rawMonto,
+        double rawAmount,
         double itbis,
-        double servicePercent,
-        String expenseId
+        double servicePercent
 ) {
 
+    @JsonIgnore
     public double getTotal() {
-        return rawMonto + itbis + servicePercent;
+        return rawAmount + itbis + servicePercent;
     }
 }

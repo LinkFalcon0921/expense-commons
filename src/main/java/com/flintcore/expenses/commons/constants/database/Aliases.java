@@ -5,6 +5,22 @@ package com.flintcore.expenses.commons.constants.database;
  * */
 public interface Aliases {
 
+    interface Users {
+        String TABLE = "users";
+
+        String ID = "id";
+        String NAME = "name";
+        String ALIAS = "alias";
+    }
+
+    /**
+     * Embedded
+     * */
+    interface Address {
+        String EMAIL = "email";
+        String PASSWORD = "password";
+    }
+
     interface Expense {
         String TABLE = "expenses";
 
@@ -13,7 +29,7 @@ public interface Aliases {
         String NCF = "ncf";
         String CREATED_AT = "created_at";
         String BILL_ID = "bill_id";
-        String STORE_ID = "store_id";
+        String STORE_RNC = "store_rnc";
         String MAPPED_BY_STORE = "id";
     }
 
@@ -33,7 +49,8 @@ public interface Aliases {
         String ID = "id";
         String RNC = "rnc";
         String NAME = "name";
-        String COMMERCIAL_NAME = "name";
+        String COMMERCIAL_NAME = "commercial_name";
+        String SPECIALITY = "speciality";
         String MAPPED_BY_EXPENSE = "store";
     }
 
@@ -45,8 +62,16 @@ public interface Aliases {
 
     interface BudgetHistory {
         String ID = "id";
-        String TABLE = "budget-histories";
+        String TABLE = "budget_histories";
 //        String AMOUNT_USED = "amount_used";
         String MAPPED_BY_BUDGET = "id";
+    }
+
+    interface UserBudgetHistory {
+        String TABLE = "user_budget_histories";
+
+        String ID = "id";
+        String BUDGET_ID = "budget_id";
+        String USER_ID = "user_id";
     }
 }

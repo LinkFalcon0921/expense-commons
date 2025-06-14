@@ -1,3 +1,5 @@
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
 plugins {
     `java-library`
     `maven-publish`
@@ -9,7 +11,9 @@ group = "com.flintcore"
 version = "0.10.1"
 
 repositories {
-    mavenLocal()
+    mavenLocal().run {
+        this.url.let(::println)
+    }
     google()
     mavenCentral()
 }
@@ -21,12 +25,25 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(javaVersion.toString())
     }
+    withSourcesJar()
+//    withJavadocJar()
 }
 
 configurations {
     compileOnly {
         extendsFrom(configurations.annotationProcessor.get())
     }
+}
+
+// Deshabilitar completamente el bootJar ya que es una librería
+tasks.getByName<BootJar>("bootJar") {
+    enabled = false
+}
+
+// Asegurar que el jar normal esté habilitado
+tasks.getByName<Jar>("jar") {
+    enabled = true
+    archiveClassifier = "" // Importante: sin classifier para que sea el jar principal
 }
 
 publishing {
@@ -37,18 +54,21 @@ publishing {
     publications {
         create<MavenPublication>("utilsLocal") {
             groupId = project.group.toString()
-            version = project.version as String
-            artifactId = project.name
+            version = project.version.toString()
+            artifactId = project.name.trim()
 
-            pom.packaging = "jar"
+            pom{
+                packaging = "jar"
+                name.set(project.name)
+            }
             from(components["java"])
         }
     }
 }
 
 dependencies {
-    compileOnly("org.springframework.boot:spring-boot-starter-data-jpa")
-    compileOnly("org.springframework.boot:spring-boot-starter-web")
+    api("org.springframework.boot:spring-boot-starter-data-jpa")
+    api("org.springframework.boot:spring-boot-starter-web")
 
     api("org.apache.commons:commons-lang3:3.14.0")
 
