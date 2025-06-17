@@ -73,6 +73,9 @@ dependencies {
 
     api("org.apache.commons:commons-lang3:3.17.0")
 
+    // Validations
+    compileOnly("jakarta.validation:jakarta.validation-api:3.1.1")
+
     // Lombok
     api("org.projectlombok:lombok:1.18.32")
     annotationProcessor("org.projectlombok:lombok:1.18.32")
