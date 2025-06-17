@@ -1,5 +1,6 @@
 package com.flintcore.expenses.commons.utils.jwts;
 
+import com.flintcore.expenses.commons.users.EUserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -20,6 +21,19 @@ public interface JwtUtils {
     static List<GrantedAuthority> mapAuthorities(List<String> authorities) {
         return authorities
                 .stream()
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
+    }
+
+    static List<GrantedAuthority> mapFromRoles(EUserRole... authorities) {
+        return mapFromRoles(Arrays.asList(authorities));
+
+    }
+
+    static List<GrantedAuthority> mapFromRoles(List<EUserRole> authorities) {
+        return authorities
+                .stream()
+                .map(Object::toString)
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
     }
