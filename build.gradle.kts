@@ -67,14 +67,16 @@ publishing {
 }
 
 dependencies {
-    api("org.springframework.boot:spring-boot-starter-data-jpa")
-    api("org.springframework.boot:spring-boot-starter-web")
+    compileOnly("org.springframework.boot:spring-boot-starter-data-jpa")
+    compileOnly("org.springframework.boot:spring-boot-starter-web")
+    compileOnly("org.springframework.boot:spring-boot-starter-security")
 
-    api("org.apache.commons:commons-lang3:3.14.0")
+    api("org.apache.commons:commons-lang3:3.17.0")
 
     // Lombok
-    compileOnly("org.projectlombok:lombok:1.18.32")
+    api("org.projectlombok:lombok:1.18.32")
     annotationProcessor("org.projectlombok:lombok:1.18.32")
+
     testCompileOnly("org.projectlombok:lombok:1.18.32")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.32")
 

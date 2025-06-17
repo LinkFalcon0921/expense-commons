@@ -1,9 +1,9 @@
 package com.flintcore.expenses.commons.users;
 
 /**
- * Enum valies to handle user roles.
+ * Enum values to handle user roles.
  * */
-public enum UserRole {
+public enum EUserRole {
     ADMIN,
     EDITOR,
     USER,

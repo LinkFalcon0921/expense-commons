@@ -11,6 +11,15 @@ public interface Aliases {
         String ID = "id";
         String NAME = "name";
         String ALIAS = "alias";
+        String ROLE_MAPPED = "user";
+    }
+
+    interface UserRole {
+        String TABLE = "user_roles";
+
+        String ID = "id";
+        String role = "role";
+        String USER_MAPPED = "id";
     }
 
     /**
